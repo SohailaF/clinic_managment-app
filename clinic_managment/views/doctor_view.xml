@@ -1,0 +1,53 @@
+<odoo>
+    <record id="doctor_tree_view" model="ir.ui.view">
+        <field name="name">Doctors Tree View</field>
+        <field name="model">clinic.doctors</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="phone"/>
+                <field name="gender"/>
+                <field name="doctor_specialty"/>
+                <field name="salary"/>
+                <field name="appointment_ids"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="doctors_fom_view" model="ir.ui.view">
+        <field name="name">Doctors Form View</field>
+        <field name="model">clinic.doctors</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Personal Info">
+                            <field name="name"/>
+                            <field name="age"/>
+
+                            <field name="gender"/>
+                        </group>
+                        <group string="Work Info">
+                            <field name="doctor_specialty"/>
+                            <field name="salary"/>
+                            <field name="appointment_ids"/>
+                        </group>
+                        <group string="Contact Info">
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+    <record id="doctor_action_view" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">clinic.doctors</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

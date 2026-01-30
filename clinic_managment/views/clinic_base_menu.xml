@@ -1,0 +1,14 @@
+<odoo>
+
+<menuitem id="clinic_root_menu" name="Clinic Manager" web_icon="clinic_managment,static\description\clinic_icon2.png"
+/>
+
+
+<menuitem id="patient_second_level_menu" name="Patient Manager" parent="clinic_root_menu" action="patient_action_view" />
+<menuitem id="patient_third_level_menu" name="Patients" parent="patient_second_level_menu" action="patient_action_view"/>
+<menuitem id="doctors_second_level_menu" name="Doctors Manager" parent="clinic_root_menu" action="doctor_action_view"/><menuitem id="doctors_third_level_menu" name="Doctors" parent="doctors_second_level_menu" action="doctor_action_view"/>
+<menuitem id="doctors_appointment_third_level" name="Doctors Appointment" parent="doctors_second_level_menu" action="doctors_appointment_action"/>
+
+<menuitem id="treatment_third_level" name="Treatment Manager" parent="patient_second_level_menu" action="treatment_action_window"/>
+
+</odoo>

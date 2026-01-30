@@ -1,0 +1,68 @@
+<odoo>
+    <record id="patient_tree_view" model="ir.ui.view">
+        <field name="name">patient_tree_view</field>
+        <field name="model">clinic.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="phone"/>
+                <field name="gender"/>
+                <field name="email"/>
+                <field name="address"/>
+                <field name="treatment_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="patient_form_view" model="ir.ui.view">
+        <field name="name">patient_form_view</field>
+        <field name="model">clinic.patient</field>
+        <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="ref"/>
+                        </div>
+                        <h1>
+                            <field name="ref" placeholder="Ref"/>
+                        </h1>
+                        <group>
+
+                            <group string='Personal Info'>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="phone"/>
+                            <field name="gender"/>
+                       </group>
+                            <group string="Contact Info">
+                                <field name="phone"/>
+                                 <field name="email"/>
+                                <field name="address"/>
+                            </group>
+                            <group string="Treatment Info">
+                                <field name="treatment_ids"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Visits">
+                                <field name="visit_ids">
+                                    <tree editable="bottom">
+                                        <field name="visit_date"/>
+                                        <field name="reason"/>
+                                        <field name="fees"/>
+
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+    <record id="patient_action_view" model="ir.actions.act_window">
+        <field name="name">Patient Managment</field>
+        <field name="res_model">clinic.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,43 @@
+<odoo>
+    <record id="treatment_tree_view" model="ir.ui.view">
+        <field name="name">Treatment Tree view</field>
+        <field name="model">patient.treatment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="treatment_name"/>
+                <field name="notes"/>
+                <field name="treatment_type"/>
+                <field name="price"/>
+                <field name="paid"/>
+                <field name="remain"/>
+                <field name="patient_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="treatment_form_view" model="ir.ui.view">
+        <field name="name">Treatment Tree view</field>
+        <field name="model">patient.treatment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="treatment_name"/>
+                           <field name="notes"/>
+                           <field name="treatment_type"/>
+                           <field name="price"/>
+                            <field name="paid"/>
+                            <field name="remain"/>
+                          <field name="patient_ids"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="treatment_action_window" model="ir.actions.act_window">
+        <field name="name">Treatment Action</field>
+        <field name="res_model">patient.treatment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
