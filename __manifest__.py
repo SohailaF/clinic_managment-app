@@ -13,6 +13,8 @@
          'views/doctors_appointment.xml',
          'views/treatment_view.xml',
          'views/clinic_base_menu.xml',
+         'wizard/patient_treatment_wizard.xml',
+         'reports/patient_report.xml',
 
 
      ],

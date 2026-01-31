@@ -10,7 +10,7 @@
                 <field name="price"/>
                 <field name="paid"/>
                 <field name="remain"/>
-                <field name="patient_ids"/>
+                <field name="patient_id"/>
             </tree>
         </field>
     </record>
@@ -28,7 +28,7 @@
                            <field name="price"/>
                             <field name="paid"/>
                             <field name="remain"/>
-                          <field name="patient_ids"/>
+                          <field name="patient_id"/>
                         </group>
                     </group>
                 </sheet>

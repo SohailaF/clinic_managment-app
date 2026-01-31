@@ -30,7 +30,7 @@ class PatientTreatment(models.Model):
          ('minor surgery','Minor Surgery')
 
     ],compute='_compute_treatment_type',store=True)
-    patient_ids=fields.Many2many('clinic.patient',string='Patient')
+    patient_id=fields.Many2one('clinic.patient',string='Patient')
     price=fields.Float()
     paid=fields.Float()
     remain=fields.Float(compute='_compute_remain')
@@ -75,6 +75,9 @@ class PatientTreatment(models.Model):
                 raise ValidationError("Treatment type must be 'Session' for this treatment!")
             elif rec.treatment_name == 'emergency treatment' and rec.treatment_type !='minor surgery':
                 raise ValidationError("Treatment type must be 'Minor Surgery' for Emergency Treatment!")
+
+
+
 
 
 

@@ -28,6 +28,19 @@ class ClinicPatient(models.Model):
 
 
 
+    def open_treatment_wizard(self):
+        self.ensure_one()
+        action=self.env.ref(
+            'clinic_managment.patient_treatment_action_wizard'
+        ).read()[0]
+
+        action['context']={
+            'default_patient_id':self.id
+        }
+        return action
+
+
+
 
 class PatientVisit(models.Model):
     _name='patient.visit'
