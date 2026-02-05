@@ -21,7 +21,7 @@ class PatientTreatment(models.Model):
        ('observation','Observation'),
        ('emergency treatment','Emergency Treatment')
 
-    ])
+    ],required=True)
     notes=fields.Text()
     treatment_type=fields.Selection([
          ('consultation','Consultation'),
@@ -34,6 +34,12 @@ class PatientTreatment(models.Model):
     price=fields.Float()
     paid=fields.Float()
     remain=fields.Float(compute='_compute_remain')
+    payment_state = fields.Selection([
+        ('unpaid', 'Unpaid'),
+        ('partial', 'Partial'),
+        ('paid', 'Paid'),
+        ('canceled', 'Canceled')
+    ], string="Payment Status", default='unpaid',compute='_compute_payment_state',store=True,readonly=True)
 
     @api.constrains('price')
     def _check_price(self):
@@ -75,6 +81,19 @@ class PatientTreatment(models.Model):
                 raise ValidationError("Treatment type must be 'Session' for this treatment!")
             elif rec.treatment_name == 'emergency treatment' and rec.treatment_type !='minor surgery':
                 raise ValidationError("Treatment type must be 'Minor Surgery' for Emergency Treatment!")
+
+
+    @api.depends('remain','price')
+    def _compute_payment_state(self):
+        for rec in self:
+            if rec.remain==0:
+                rec.payment_state='paid'
+
+            elif rec.remain<rec.price:
+                rec.payment_state='partial'
+
+            elif rec.remain==rec.price:
+                rec.payment_state='unpaid'
 
 
 

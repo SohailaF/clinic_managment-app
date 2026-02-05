@@ -20,6 +20,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                <widget name="web_ribbon" title="Paid" bg_color="bg-success" invisible="payment_state!='paid'"/>
+                <widget name="web_ribbon" title="Unpaid" bg_color="bg-danger" invisible="payment_state!='unpaid'"/>
+                <widget name="web_ribbon" title="Partial" bg_color="bg-warning" invisible="payment_state != 'partial'"/>
+
+
                     <group>
                         <group>
                             <field name="treatment_name"/>
@@ -28,6 +33,7 @@
                            <field name="price"/>
                             <field name="paid"/>
                             <field name="remain"/>
+                            <field name="payment_state"/>
                           <field name="patient_id"/>
                         </group>
                     </group>

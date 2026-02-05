@@ -15,6 +15,7 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+
                     <group>
                         <field name="doctor_id"/>
                         <field name="appointment"/>

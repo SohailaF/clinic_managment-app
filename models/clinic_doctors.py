@@ -1,4 +1,4 @@
-from odoo import models,fields
+from odoo import models,fields,api
 
 class ClinicDoctors(models.Model):
     _name="clinic.doctors"
@@ -15,3 +15,10 @@ class ClinicDoctors(models.Model):
     salary=fields.Float(required=True)
     email=fields.Char()
     appointment_ids=fields.One2many('doctors.appointment','doctor_id',string='Appointment')
+
+
+    def open_related_appointment(self):
+        print("Inside open_related_appointment method")
+        action=self.env['ir.actions.actions']._for_xml_id('clinic_managment.doctors_appointment_action')
+        action['domain'] = [('id', 'in', self.appointment_ids.ids)]
+        return action
